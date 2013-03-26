@@ -7,8 +7,6 @@ include Mongo
 
 @coll = MongoClient.new('localhost', 27017)['datasheets_development']['big_generators']
 
-puts @coll
-
 @coll.find({}).each do |g|
   datasheet = ODFReport::Report.new('./big_gen-set_template.odt') do |d|
     g.each do |item|
